@@ -1,0 +1,23 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { margin:0; padding:24px; background:var(--void-1); font-family:var(--font-mono); font-size:14px; color:var(--fg-1); }
+  .label { font-size:11px; letter-spacing:var(--ls-caps); color:var(--phosphor); text-transform:uppercase; margin-bottom:14px; }
+  .term { background:var(--void-2); border:var(--border-line); padding:18px 22px; line-height:1.75; }
+  .ln { white-space:pre; }
+  .p { color:var(--phosphor); text-shadow:var(--glow-text); }
+  .dim { color:var(--fg-3); }
+  .cursor { display:inline-block; width:0.5ch; height:1em; background:var(--phosphor); vertical-align:-2px; margin-left:2px; box-shadow:var(--glow-sm); animation:blink 1s steps(2) infinite; }
+  @keyframes blink { 50% { opacity:0 } }
+  h1 { font-size:14px; letter-spacing:var(--ls-caps); }
+</style></head>
+<body>
+  <div class="label">[ cursor & prompt — primary motif ]</div>
+  <div class="term">
+    <div class="ln"><span class="p">$</span> whoami</div>
+    <div class="ln dim">› dawn — aigc explorer · ex-damo · ex-360</div>
+    <div class="ln" style="margin-top:8px"><span class="p">$</span> cat ~/now.log</div>
+    <div class="ln dim">› [2026-05-14 09:21] training small diffusion models</div>
+    <div class="ln dim">› [2026-05-14 09:21] drawing pixel cats</div>
+    <div class="ln" style="margin-top:8px"><span class="p">$</span> <span class="cursor"></span></div>
+  </div>
+</body></html>

@@ -1,0 +1,28 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { margin:0; padding:24px; background:var(--void-1); font-family:var(--font-mono); font-size:13px; color:var(--fg-1); }
+  .label { font-size:11px; letter-spacing:var(--ls-caps); color:var(--phosphor); text-transform:uppercase; margin-bottom:14px; }
+  .log { background:var(--void-2); padding:16px 20px; border:var(--border-faint); border-left:2px solid var(--phosphor); }
+  .ln { display:flex; gap:14px; padding:2px 0; }
+  .ln .no { color:var(--fg-5); width:24px; text-align:right; font-size:11px; }
+  .ln .ts { color:var(--fg-4); font-size:11px; }
+  .ln .lv { width:48px; font-size:11px; letter-spacing:0.04em; }
+  .ln .ms { color:var(--fg-1); }
+  .ok { color:var(--log-ok); }
+  .info { color:var(--log-info); }
+  .warn { color:var(--log-warn); }
+  .dim { color:var(--fg-3); }
+  .ph { color:var(--phosphor); text-shadow:var(--glow-text); }
+  .cursor { display:inline-block; width:0.5ch; height:13px; background:var(--phosphor); vertical-align:-1px; animation:blink 1s steps(2) infinite; }
+  @keyframes blink { 50% { opacity:0 } }
+</style></head>
+<body>
+  <div class="label">[ log block — the workhorse content unit ]</div>
+  <div class="log">
+    <div class="ln"><span class="no">001</span><span class="ts">09:21:14</span><span class="lv ok">[ ok  ]</span><span class="ms">boot complete · <span class="ph">dawn</span> session opened</span></div>
+    <div class="ln"><span class="no">002</span><span class="ts">09:21:15</span><span class="lv info">[ info ]</span><span class="ms">loaded 7 experience entries from <span class="dim">~/experience/*.log</span></span></div>
+    <div class="ln"><span class="no">003</span><span class="ts">09:21:17</span><span class="lv warn">[ warn ]</span><span class="ms">3 pixel cats roaming · click to feed</span></div>
+    <div class="ln"><span class="no">004</span><span class="ts">09:21:21</span><span class="lv info">[ info ]</span><span class="ms">hover focus engaged → <span class="ph">360 集团</span></span></div>
+    <div class="ln"><span class="no">005</span><span class="ts">09:21:22</span><span class="lv info">[ info ]</span><span class="ms">rendering 1842 particles · building.360 <span class="cursor"></span></span></div>
+  </div>
+</body></html>

@@ -1,0 +1,27 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { margin:0; padding:24px; background:var(--void-1); }
+  .row { display:grid; grid-template-columns:repeat(5,1fr); gap:8px; }
+  .sw { height:88px; display:flex; flex-direction:column; justify-content:space-between; padding:10px 12px; border:var(--border-line); font-family:var(--font-mono); font-size:11px; color:var(--fg-1); }
+  .sw .v { color:var(--fg-1); font-weight:500; font-size:13px; }
+  .sw .h { color:var(--fg-3); font-size:10px; }
+  .label { font-size:11px; letter-spacing:var(--ls-caps); color:var(--phosphor); text-transform:uppercase; margin-bottom:12px; }
+</style></head>
+<body>
+  <div class="label">[ void scale — surface depth ]</div>
+  <div class="row">
+    <div class="sw" style="background:var(--void-0)"><span class="v">void-0</span><span class="h">#000000</span></div>
+    <div class="sw" style="background:var(--void-1)"><span class="v">void-1 ← page</span><span class="h">#05080a</span></div>
+    <div class="sw" style="background:var(--void-2)"><span class="v">void-2 panel</span><span class="h">#0a0f12</span></div>
+    <div class="sw" style="background:var(--void-3)"><span class="v">void-3 surface</span><span class="h">#0f161a</span></div>
+    <div class="sw" style="background:var(--void-4)"><span class="v">void-4 hover</span><span class="h">#16201f</span></div>
+  </div>
+  <div class="label" style="margin-top:24px">[ foreground alphas — single hue, varying transparency ]</div>
+  <div style="display:flex;flex-direction:column;gap:4px;background:var(--void-1);padding:12px;border:var(--border-faint)">
+    <div style="color:var(--fg-1);font-family:var(--font-mono);font-size:13px">fg-1 · 96% · primary text — the loudest log line</div>
+    <div style="color:var(--fg-2);font-family:var(--font-mono);font-size:13px">fg-2 · 72% · secondary — body copy in expanded section</div>
+    <div style="color:var(--fg-3);font-family:var(--font-mono);font-size:13px">fg-3 · 48% · tertiary — timestamps & line numbers</div>
+    <div style="color:var(--fg-4);font-family:var(--font-mono);font-size:13px">fg-4 · 28% · faint — defocused row when something else is hovered</div>
+    <div style="color:var(--fg-5);font-family:var(--font-mono);font-size:13px">fg-5 · 14% · whisper — dividers, decorative ascii</div>
+  </div>
+</body></html>

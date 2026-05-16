@@ -1,0 +1,238 @@
+/* ============================================================
+   Dawn AIGC Explorer Log — Foundations
+   Terminal / OS-inspired personal site
+   ============================================================ */
+
+/* ---------- Webfonts (Google Fonts substitutions, flagged) ---------- */
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=VT323&family=Press+Start+2P&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+:root {
+  /* ============ PALETTE — phosphor mint, single hue, varying alpha ============ */
+  /* Anchor hue ≈ 158° (mint / teal-green) drawn from the 360 building's glow */
+
+  /* Base voids */
+  --void-0: #000000;            /* deepest space */
+  --void-1: #05080a;            /* page bg */
+  --void-2: #0a0f12;            /* panel bg */
+  --void-3: #0f161a;            /* elevated surface */
+  --void-4: #16201f;            /* hover surface */
+  --void-line: rgba(94, 234, 212, 0.10);   /* hairline divider */
+
+  /* Phosphor mint scale (the only chromatic family) */
+  --mint-50:  #ecfdf5;
+  --mint-100: #d1fae5;
+  --mint-200: #a7f3d0;
+  --mint-300: #6ee7b7;
+  --mint-400: #34d399;
+  --mint-500: #10b981;          /* primary signal */
+  --mint-600: #059669;
+  --mint-700: #047857;
+  --mint-800: #065f46;
+  --mint-900: #064e3b;
+
+  /* Phosphor (the actual screen-glow color, what cursors & active text use) */
+  --phosphor: #5eead4;          /* primary terminal foreground */
+  --phosphor-dim: #2dd4bf;
+  --phosphor-deep: #0d9488;
+  --phosphor-glow: rgba(94, 234, 212, 0.55);
+
+  /* Foreground hierarchy — same hue, different alpha (per brief) */
+  --fg-1: rgba(220, 252, 231, 0.96);   /* primary text */
+  --fg-2: rgba(220, 252, 231, 0.72);   /* secondary */
+  --fg-3: rgba(220, 252, 231, 0.48);   /* tertiary / meta */
+  --fg-4: rgba(220, 252, 231, 0.28);   /* faint / blurred */
+  --fg-5: rgba(220, 252, 231, 0.14);   /* whisper */
+
+  /* Semantic log levels (still in-family where possible) */
+  --log-info:   var(--phosphor);
+  --log-ok:     #4ade80;
+  --log-warn:   #fbbf24;
+  --log-err:    #f87171;
+  --log-debug:  rgba(94, 234, 212, 0.5);
+
+  /* Accent — used very sparingly, for blueprint/pixel-cat */
+  --accent-blueprint: #67e8f9;        /* cyan blueprint lines */
+  --accent-cat:       #f9a8d4;        /* pixel-cat pink */
+
+  /* ============ TYPE ============ */
+  --font-mono:    'JetBrains Mono', 'SF Mono', 'Menlo', ui-monospace, monospace;
+  --font-pixel:   'VT323', 'Press Start 2P', monospace;
+  --font-display: 'Space Grotesk', 'JetBrains Mono', sans-serif;  /* for occasional non-terminal moments */
+
+  /* Type scale — log-style, tight & uniform */
+  --t-xs:   11px;   /* line numbers, tags */
+  --t-sm:   13px;   /* meta, timestamps */
+  --t-base: 14px;   /* body / log line */
+  --t-md:   16px;   /* emphasis body */
+  --t-lg:   20px;   /* sub-headers */
+  --t-xl:   28px;   /* command title */
+  --t-2xl:  40px;   /* hero */
+  --t-3xl:  64px;   /* big hero */
+  --t-hero: clamp(48px, 8vw, 96px);  /* mega */
+
+  --lh-tight:   1.15;
+  --lh-snug:    1.35;
+  --lh-normal:  1.55;
+  --lh-loose:   1.8;
+
+  --ls-tight:   -0.01em;
+  --ls-normal:  0;
+  --ls-wide:    0.04em;
+  --ls-mono:    0.02em;
+  --ls-caps:    0.18em;     /* ALL CAPS labels: [ SECTION ] */
+
+  /* ============ SPACING / RADIUS / SHADOW ============ */
+  --s-0: 0;
+  --s-1: 4px;
+  --s-2: 8px;
+  --s-3: 12px;
+  --s-4: 16px;
+  --s-5: 24px;
+  --s-6: 32px;
+  --s-7: 48px;
+  --s-8: 64px;
+  --s-9: 96px;
+
+  --radius-0: 0;            /* terminals are square */
+  --radius-1: 2px;
+  --radius-2: 4px;
+  --radius-3: 8px;          /* used only for dialog bubbles */
+  --radius-pill: 999px;     /* used only for status dots */
+
+  /* Borders */
+  --border-faint:  1px solid rgba(94, 234, 212, 0.10);
+  --border-line:   1px solid rgba(94, 234, 212, 0.20);
+  --border-active: 1px solid rgba(94, 234, 212, 0.55);
+  --border-dashed: 1px dashed rgba(94, 234, 212, 0.30);
+
+  /* Shadows = phosphor glow, not soft drop */
+  --glow-sm: 0 0 8px rgba(94, 234, 212, 0.35);
+  --glow-md: 0 0 16px rgba(94, 234, 212, 0.45), 0 0 2px rgba(94, 234, 212, 0.8);
+  --glow-lg: 0 0 32px rgba(94, 234, 212, 0.55), 0 0 4px rgba(94, 234, 212, 0.9);
+  --glow-text: 0 0 6px rgba(94, 234, 212, 0.6);
+
+  /* Scanline / CRT */
+  --scanline: repeating-linear-gradient(
+    to bottom,
+    rgba(94, 234, 212, 0.025) 0,
+    rgba(94, 234, 212, 0.025) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+  --grid-bg: linear-gradient(rgba(94, 234, 212, 0.04) 1px, transparent 1px),
+             linear-gradient(90deg, rgba(94, 234, 212, 0.04) 1px, transparent 1px);
+}
+
+/* ============ SEMANTIC ELEMENTS ============ */
+
+html, body {
+  background: var(--void-1);
+  color: var(--fg-1);
+  font-family: var(--font-mono);
+  font-size: var(--t-base);
+  line-height: var(--lh-normal);
+  letter-spacing: var(--ls-mono);
+  -webkit-font-smoothing: antialiased;
+  font-variant-ligatures: none;
+}
+
+::selection { background: var(--phosphor); color: var(--void-0); }
+
+h1, .h1 {
+  font-family: var(--font-mono);
+  font-size: var(--t-2xl);
+  line-height: var(--lh-tight);
+  font-weight: 500;
+  letter-spacing: var(--ls-tight);
+  color: var(--phosphor);
+  text-shadow: var(--glow-text);
+}
+h2, .h2 {
+  font-family: var(--font-mono);
+  font-size: var(--t-xl);
+  line-height: var(--lh-snug);
+  font-weight: 500;
+  color: var(--fg-1);
+}
+h3, .h3 {
+  font-family: var(--font-mono);
+  font-size: var(--t-lg);
+  font-weight: 500;
+  color: var(--fg-1);
+}
+
+/* Section markers — [ COMMAND ] style */
+.section-marker {
+  font-family: var(--font-mono);
+  font-size: var(--t-xs);
+  letter-spacing: var(--ls-caps);
+  text-transform: uppercase;
+  color: var(--phosphor);
+  font-weight: 500;
+}
+
+p, .body {
+  font-family: var(--font-mono);
+  font-size: var(--t-base);
+  line-height: var(--lh-loose);
+  color: var(--fg-2);
+}
+
+code, .code, kbd, samp, pre {
+  font-family: var(--font-mono);
+  font-size: 0.95em;
+  color: var(--phosphor);
+}
+
+.meta {            /* timestamps, line numbers */
+  font-family: var(--font-mono);
+  font-size: var(--t-sm);
+  color: var(--fg-4);
+  letter-spacing: var(--ls-mono);
+}
+
+.pixel-text {       /* for pixel-cat captions, score numbers */
+  font-family: var(--font-pixel);
+  font-size: 20px;
+  letter-spacing: 0.04em;
+  color: var(--phosphor);
+  text-shadow: var(--glow-text);
+}
+
+a {
+  color: var(--phosphor);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(94, 234, 212, 0.3);
+  transition: color 120ms linear, border-color 120ms linear, text-shadow 120ms linear;
+}
+a:hover {
+  color: var(--mint-200);
+  border-bottom-color: var(--phosphor);
+  text-shadow: var(--glow-text);
+}
+
+/* The cursor: a hard block, blinks */
+.cursor {
+  display: inline-block;
+  width: 0.6ch;
+  height: 1.1em;
+  vertical-align: -0.15em;
+  background: var(--phosphor);
+  box-shadow: var(--glow-sm);
+  animation: blink 1s steps(2, end) infinite;
+}
+@keyframes blink {
+  0%, 50%   { opacity: 1; }
+  50.01%, 100% { opacity: 0; }
+}
+
+/* Prompt prefix */
+.prompt::before {
+  content: "$ ";
+  color: var(--phosphor);
+  margin-right: 4px;
+}
+.prompt-arrow::before {
+  content: "› ";
+  color: var(--phosphor-dim);
+}

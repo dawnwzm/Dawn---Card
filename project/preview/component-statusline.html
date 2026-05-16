@@ -1,0 +1,37 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { margin:0; padding:24px; background:var(--void-1); font-family:var(--font-mono); }
+  .label { font-size:11px; letter-spacing:var(--ls-caps); color:var(--phosphor); text-transform:uppercase; margin-bottom:14px; }
+  .bar { height:28px; background:var(--void-2); border:var(--border-faint); display:flex; align-items:center; padding:0 12px; gap:14px; font-size:11px; color:var(--fg-2); letter-spacing:var(--ls-mono); }
+  .seg { display:flex; align-items:center; gap:6px; }
+  .seg .k { color:var(--phosphor); text-shadow:var(--glow-text); }
+  .sep { color:var(--fg-5); }
+  .cursor { display:inline-block; width:0.5ch; height:11px; background:var(--phosphor); vertical-align:-1px; margin-left:2px; animation:blink 1s steps(2) infinite; }
+  @keyframes blink { 50% { opacity:0 } }
+</style></head>
+<body>
+  <div class="label">[ top statusline — fixed h=28px ]</div>
+  <div class="bar">
+    <span class="seg"><span class="k">▮</span> dawn@aigc-explorer</span>
+    <span class="sep">│</span>
+    <span class="seg">session: <span class="k">1d 03:42</span></span>
+    <span class="sep">│</span>
+    <span class="seg">fps: <span class="k">60</span></span>
+    <span class="sep">│</span>
+    <span class="seg">cats: <span class="k">3</span></span>
+    <span style="flex:1"></span>
+    <span class="seg">~/experience<span class="cursor"></span></span>
+  </div>
+  <div class="label" style="margin-top:24px">[ bottom command bar ]</div>
+  <div class="bar" style="justify-content:flex-start">
+    <span class="seg"><span class="k">[hover]</span> inspect</span>
+    <span class="sep">·</span>
+    <span class="seg"><span class="k">[scroll]</span> load next</span>
+    <span class="sep">·</span>
+    <span class="seg"><span class="k">[esc]</span> back to /</span>
+    <span style="flex:1"></span>
+    <span class="seg" style="color:var(--fg-4)">v1.0.0 · build 2026.05</span>
+  </div>
+  <div class="label" style="margin-top:24px">[ section divider ascii ]</div>
+  <div style="color:var(--fg-5);font-size:11px;letter-spacing:2px">─── ─── ─── ─── ─── ─── ─── ─── ─── ─── ─── ─── ─── ─── ─── ─── ─── ─── ─── ─── ─── ─── ─── ─── ─── ─── ─── ─── ─── ───</div>
+</body></html>

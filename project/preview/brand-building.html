@@ -1,0 +1,22 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { margin:0; padding:24px; background:var(--void-1); font-family:var(--font-mono); }
+  .label { font-size:11px; letter-spacing:var(--ls-caps); color:var(--phosphor); text-transform:uppercase; margin-bottom:14px; }
+  .stage { background:var(--void-1); height:220px; position:relative; overflow:hidden; border:var(--border-faint); display:flex; align-items:center; justify-content:center; }
+  .grid-bg { position:absolute; inset:0; background-image:linear-gradient(rgba(94,234,212,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(94,234,212,0.05) 1px,transparent 1px); background-size:18px 18px; }
+  .scan { position:absolute; inset:0; background:repeating-linear-gradient(to bottom,rgba(94,234,212,0.025) 0,rgba(94,234,212,0.025) 1px,transparent 1px,transparent 3px); pointer-events:none; }
+  .bldg { height:180px; width:auto; filter:hue-rotate(-10deg) brightness(1.1) drop-shadow(0 0 24px rgba(94,234,212,0.45)) drop-shadow(0 0 4px rgba(94,234,212,0.9)); mix-blend-mode:screen; }
+  .caption { position:absolute; left:18px; bottom:14px; color:var(--fg-3); font-size:11px; }
+  .caption .k { color:var(--phosphor); }
+  .meta { position:absolute; right:18px; top:14px; color:var(--fg-4); font-size:10px; letter-spacing:var(--ls-caps); }
+</style></head>
+<body>
+  <div class="label">[ brand · 360 集团 building — hover-trigger 3D particle target ]</div>
+  <div class="stage">
+    <div class="grid-bg"></div>
+    <img class="bldg" src="../assets/building-360.png" alt="">
+    <div class="scan"></div>
+    <div class="meta">screen blend · phosphor glow filter</div>
+    <div class="caption"><span class="k">building-360.png</span> · sampled to ~2000 particles on hover</div>
+  </div>
+</body></html>

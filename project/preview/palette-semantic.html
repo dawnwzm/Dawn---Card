@@ -1,0 +1,25 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { margin:0; padding:24px; background:var(--void-1); font-family:var(--font-mono); }
+  .label { font-size:11px; letter-spacing:var(--ls-caps); color:var(--phosphor); text-transform:uppercase; margin-bottom:12px; }
+  .grid { display:grid; grid-template-columns:repeat(5,1fr); gap:8px; }
+  .item { padding:14px 12px; border-left:2px solid; background:var(--void-2); font-size:12px; color:var(--fg-1); display:flex; flex-direction:column; gap:6px; min-height:84px; }
+  .item .name { font-weight:500; }
+  .item .hex { font-size:10px; color:var(--fg-3); }
+  .item .use { font-size:10px; color:var(--fg-2); line-height:1.4; }
+</style></head>
+<body>
+  <div class="label">[ semantic — log levels & accents ]</div>
+  <div class="grid">
+    <div class="item" style="border-color:var(--log-info)"><span class="name" style="color:var(--log-info)">info</span><span class="hex">#5eead4</span><span class="use">default log, cursor</span></div>
+    <div class="item" style="border-color:var(--log-ok)"><span class="name" style="color:var(--log-ok)">ok / shipped</span><span class="hex">#4ade80</span><span class="use">success, ✓ checkmark</span></div>
+    <div class="item" style="border-color:var(--log-warn)"><span class="name" style="color:var(--log-warn)">warn</span><span class="hex">#fbbf24</span><span class="use">in-progress, ⚠</span></div>
+    <div class="item" style="border-color:var(--log-err)"><span class="name" style="color:var(--log-err)">error</span><span class="hex">#f87171</span><span class="use">rare; failed exp</span></div>
+    <div class="item" style="border-color:var(--log-debug)"><span class="name" style="color:var(--log-debug)">debug</span><span class="hex">phosphor·0.5</span><span class="use">meta, timestamps</span></div>
+  </div>
+  <div class="label" style="margin-top:20px">[ accents — used ≤2% of surface ]</div>
+  <div class="grid" style="grid-template-columns:1fr 1fr">
+    <div class="item" style="border-color:var(--accent-blueprint)"><span class="name" style="color:var(--accent-blueprint)">blueprint cyan</span><span class="hex">#67e8f9</span><span class="use">3D building wireframe edges</span></div>
+    <div class="item" style="border-color:var(--accent-cat)"><span class="name" style="color:var(--accent-cat)">pixel-cat pink</span><span class="hex">#f9a8d4</span><span class="use">cat nose / paw pads only</span></div>
+  </div>
+</body></html>

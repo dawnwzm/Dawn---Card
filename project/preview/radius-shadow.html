@@ -1,0 +1,25 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { margin:0; padding:24px; background:var(--void-1); font-family:var(--font-mono); }
+  .label { font-size:11px; letter-spacing:var(--ls-caps); color:var(--phosphor); text-transform:uppercase; margin-bottom:14px; }
+  .grid { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; }
+  .box { background:var(--void-3); height:88px; display:flex; align-items:center; justify-content:center; flex-direction:column; gap:6px; border:var(--border-line); }
+  .box .n { color:var(--fg-1); font-size:11px; }
+  .box .v { color:var(--fg-3); font-size:10px; }
+</style></head>
+<body>
+  <div class="label">[ radius — square is default ]</div>
+  <div class="grid">
+    <div class="box" style="border-radius:0"><span class="n">--radius-0</span><span class="v">0px · default</span></div>
+    <div class="box" style="border-radius:2px"><span class="n">--radius-1</span><span class="v">2px</span></div>
+    <div class="box" style="border-radius:4px"><span class="n">--radius-2</span><span class="v">4px</span></div>
+    <div class="box" style="border-radius:8px"><span class="n">--radius-3</span><span class="v">8px · dialog</span></div>
+  </div>
+  <div class="label" style="margin-top:20px">[ glow — no drop shadow, only phosphor radiate ]</div>
+  <div class="grid">
+    <div class="box" style="background:var(--phosphor);box-shadow:var(--glow-sm)"><span class="n" style="color:var(--void-0)">glow-sm</span><span class="v" style="color:var(--void-2)">cursor, key</span></div>
+    <div class="box" style="background:var(--phosphor);box-shadow:var(--glow-md)"><span class="n" style="color:var(--void-0)">glow-md</span><span class="v" style="color:var(--void-2)">hover</span></div>
+    <div class="box" style="background:var(--phosphor);box-shadow:var(--glow-lg)"><span class="n" style="color:var(--void-0)">glow-lg</span><span class="v" style="color:var(--void-2)">particle core</span></div>
+    <div class="box" style="background:var(--void-3);color:var(--phosphor);font-weight:500"><span class="n" style="text-shadow:var(--glow-text)">glow-text</span><span class="v">on keywords</span></div>
+  </div>
+</body></html>
