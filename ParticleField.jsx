@@ -6,12 +6,12 @@
 //                target on focus change.
 
 const BUILDINGS = {
-  "360":     { src: "../../assets/building-360.png",     sampleW: 260, density: 2 },
-  "ali":     { src: "../../assets/building-ali.png",     sampleW: 260, density: 2 },
-  "theater": { src: "../../assets/building-theater.png", sampleW: 260, density: 2 },
-  "liweike": { src: "../../assets/building-liweike.png", sampleW: 260, density: 2 },
+  "360":     { src: "assets/building-360.png",     sampleW: 260, density: 2 },
+  "ali":     { src: "assets/building-ali.png",     sampleW: 260, density: 2 },
+  "theater": { src: "assets/building-theater.png", sampleW: 260, density: 2 },
+  "liweike": { src: "assets/building-liweike.png", sampleW: 260, density: 2 },
 };
-const ASTRO_SRC = "../../assets/astronaut-wave.png";
+const ASTRO_SRC = "assets/astronaut-wave.png";
 const ASTRO_COLS = 26;     // chunky pixel grid columns
 const ASTRO_CELL = 8;      // px per pixel cell
 
@@ -341,7 +341,7 @@ function ParticleField({ activeBuildingId, terminalActive }) {
     (async () => {
       try {
         const r = await samplePNG(
-          "../../assets/portrait-silhouette.png",
+          "assets/portrait-silhouette.png",
           410,
           1,
           { skipWhite: true, whiteThresh: 220, fineMode: true, detectEdges: true }

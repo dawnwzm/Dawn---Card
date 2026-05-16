@@ -81,7 +81,7 @@ function App() {
       <PixelCat
         color="yellow"
         startDelay={4500}
-        downloadHref="../../assets/resume.pdf"
+        downloadHref="assets/resume.pdf"
         downloadFilename="王子墨-AIGC产品运营-简历.pdf"
         tooltip="click → 下载我的简历"
       />
