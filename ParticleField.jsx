@@ -49,23 +49,7 @@ function ParticleField({ activeBuildingId, terminalActive }) {
     stateRef.current.activeBuildingId = activeBuildingId;
   }, [activeBuildingId]);
 
-  React.useEffect(() => {
-    const por = stateRef.current.portrait;
-    por.pinned = !!terminalActive;
-    const now = performance.now();
-    if (terminalActive) {
-      // Appear immediately and stay
-      por.visible = true;
-      por.bornAt = now;
-      por.hideAt = Number.POSITIVE_INFINITY;
-    } else {
-      // Terminal finished: begin fade out, then 3s cadence
-      if (por.visible) {
-        por.hideAt = now;          // start fadeOut
-      }
-      por.nextAt = now + 3000 + 800;  // wait for fade + 3s
-    }
-  }, [terminalActive]);
+  // Portrait is always visible — no terminalActive scheduling needed
 
   React.useEffect(() => {
     const canvas = canvasRef.current;
@@ -374,8 +358,10 @@ function ParticleField({ activeBuildingId, terminalActive }) {
         stateRef.current.portrait.w = r.w * scale;
         stateRef.current.portrait.h = r.h * scale;
         stateRef.current.portrait.depth = depth;
-        // First appearance: 3-12s after load
-        stateRef.current.portrait.nextAt = performance.now() + 3000 + Math.random() * 9000;
+        // Always visible — appear immediately and stay permanently
+        stateRef.current.portrait.visible = true;
+        stateRef.current.portrait.bornAt = performance.now();
+        stateRef.current.portrait.hideAt = Number.POSITIVE_INFINITY;
       } catch (e) {
         console.warn("[particle] failed to load portrait:", e);
       }
@@ -726,21 +712,6 @@ function ParticleField({ activeBuildingId, terminalActive }) {
       {
         const por = stateRef.current.portrait;
         if (por.loaded) {
-          // Schedule: pinned by terminal OR interval after terminal done.
-          if (!por.pinned) {
-            if (!por.visible) {
-              if (!dimmed && now >= por.nextAt) {
-                por.visible = true;
-                por.bornAt = now;
-                por.hideAt = now + 4500;     // total lifetime ~4.5s
-              }
-            } else if (por.hideAt !== Number.POSITIVE_INFINITY && now >= por.hideAt + 800) {
-              // Fully gone — schedule next (3s cadence after terminal done)
-              por.visible = false;
-              por.nextAt = now + 3000;
-            }
-          }
-
           if (por.visible) {
             // Lifetime alpha curve:
             //   pinned    → fade in 0.6s, stay fully on
@@ -754,10 +725,9 @@ function ParticleField({ activeBuildingId, terminalActive }) {
             }
             const lifeAlpha = Math.min(fadeIn, fadeOut) * (dimmed ? 0.3 : 1) * 1.8;
 
-            // Position: align portrait TOP with experience section top.
-            // statusline(28) + padding(80) + brand(82) + terminal(~260) ≈ 450px.
+            // Position: top-right corner, 44px from top (below statusline)
             const pcx = W - por.w * 0.45;
-            const pcy = Math.max(400, H * 0.40) + por.h * 0.5;
+            const pcy = 44 + por.h * 0.5;
 
             // Slow rotation around Y-axis, slight pitch
             const yaw = Math.sin(t * 0.30) * 0.45;

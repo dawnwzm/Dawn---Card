@@ -30,57 +30,103 @@ function StatRow({ label, value, suffix, active }) {
 }
 
 function ExperienceCard({ item, visible }) {
+  const [hoveredImg, setHoveredImg] = React.useState(null);
+
+  // Clear preview when switching cards
+  React.useEffect(() => { setHoveredImg(null); }, [item?.id]);
+
   if (!item) return null;
   return (
-    <div className={`exp-card ${visible ? "in" : "out"}`}>
-      <div className="card-arrow"></div>
-      <div className="card-header">
-        <span className="card-eyebrow">// inspecting</span>
-        <span className="card-id">~/experience/{item.id}.log</span>
-      </div>
-      <div className="card-meta">
-        <span>{item.role}</span>
-        <span className="card-dot">·</span>
-        <span>{item.year}</span>
-        <span className="card-dot">·</span>
-        <span>{item.location}</span>
-      </div>
-      <ul className="card-bullets">
-        {item.bullets.map((b, i) => (
-          <li key={i}>{b}</li>
-        ))}
-      </ul>
-      {item.images && item.images.length > 0 && (
-        <div className="card-images">
-          {item.images.map((src, i) => (
-            <div className="card-image-slot" key={i}>
-              <img src={src} alt="" className="card-image" loading="lazy" />
-            </div>
+    <>
+      {/* Full-size image preview — appears on left side over building particles */}
+      {hoveredImg && (
+        <div
+          style={{
+            position: "fixed",
+            left: "3%",
+            top: "50%",
+            transform: "translateY(-50%)",
+            width: "46%",
+            maxHeight: "74vh",
+            zIndex: 200,
+            pointerEvents: "none",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            animation: "imgPreviewIn 160ms cubic-bezier(0.2,0.7,0.2,1) forwards",
+          }}
+        >
+          <img
+            src={hoveredImg}
+            alt=""
+            style={{
+              maxWidth: "100%",
+              maxHeight: "74vh",
+              objectFit: "contain",
+              border: "1px solid rgba(94,234,212,0.45)",
+              boxShadow:
+                "0 0 60px rgba(94,234,212,0.35), 0 0 12px rgba(94,234,212,0.7)",
+              background: "rgba(5,8,10,0.75)",
+            }}
+          />
+        </div>
+      )}
+
+      <div className={`exp-card ${visible ? "in" : "out"}`}>
+        <div className="card-arrow"></div>
+        <div className="card-header">
+          <span className="card-eyebrow">// inspecting</span>
+          <span className="card-id">~/experience/{item.id}.log</span>
+        </div>
+        <div className="card-meta">
+          <span>{item.role}</span>
+          <span className="card-dot">·</span>
+          <span>{item.year}</span>
+          <span className="card-dot">·</span>
+          <span>{item.location}</span>
+        </div>
+        <ul className="card-bullets">
+          {item.bullets.map((b, i) => (
+            <li key={i}>{b}</li>
+          ))}
+        </ul>
+        {item.images && item.images.length > 0 && (
+          <div className="card-images">
+            {item.images.map((src, i) => (
+              <div
+                className="card-image-slot"
+                key={i}
+                onMouseEnter={() => setHoveredImg(src)}
+                onMouseLeave={() => setHoveredImg(null)}
+              >
+                <img src={src} alt="" className="card-image" loading="lazy" />
+              </div>
+            ))}
+          </div>
+        )}
+        {item.stats && (
+          <div className="card-stats">
+            {Object.entries(item.stats).map(([k, v]) => {
+              const meta = item.stat_labels?.[k] || {};
+              return (
+                <StatRow
+                  key={k}
+                  label={meta.label || k}
+                  suffix={meta.suffix}
+                  value={v}
+                  active={visible}
+                />
+              );
+            })}
+          </div>
+        )}
+        <div className="card-tags">
+          {item.tags.map((t) => (
+            <span className="card-tag" key={t}>{t}</span>
           ))}
         </div>
-      )}
-      {item.stats && (
-        <div className="card-stats">
-          {Object.entries(item.stats).map(([k, v]) => {
-            const meta = item.stat_labels?.[k] || {};
-            return (
-              <StatRow
-                key={k}
-                label={meta.label || k}
-                suffix={meta.suffix}
-                value={v}
-                active={visible}
-              />
-            );
-          })}
-        </div>
-      )}
-      <div className="card-tags">
-        {item.tags.map((t) => (
-          <span className="card-tag" key={t}>{t}</span>
-        ))}
       </div>
-    </div>
+    </>
   );
 }
 window.ExperienceCard = ExperienceCard;
